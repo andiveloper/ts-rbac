@@ -41,7 +41,7 @@ export class RBAC {
 
     can(roles: string | string[]): PermissionChecker {
         const rolesAsArray: string[] = Array.isArray(roles) ? roles : [roles];
-        return new PermissionChecker(this.scopeMap, this.getAllowedActions(rolesAsArray));
+        return new PermissionChecker(this.scopeMap, this.getAllowedActionsForRoles(rolesAsArray));
     }
 
     private resolveRole(roleName: string): Role {
@@ -64,7 +64,7 @@ export class RBAC {
         return Array.from(roles.values());
     }
 
-    getAllowedActions(roleNames: string[]): Action[] {
+    getAllowedActionsForRoles(roleNames: string[]): Action[] {
         const allowedActions: Map<string, Action> = new Map<string, Action>();
         for (const roleName of roleNames) {
             const role: Role = this.resolveRole(roleName);
@@ -85,5 +85,13 @@ export class RBAC {
             }
         }
         return Array.from(allowedActions.values());
+    }
+
+    getDefinedRoles(): Role[] {
+        return Array.from(this.roleMap.values());
+    }
+
+    getDefinedScopes(): Scope[] {
+        return Array.from(this.scopeMap.values());
     }
 }

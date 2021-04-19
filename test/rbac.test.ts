@@ -35,8 +35,8 @@ describe('RBAC', () => {
         // when
 
         const rbac: RBAC = new RBAC(roleDefinition);
-        const allowedActionsForRole1: Action[] = rbac.getAllowedActions(['role1']);
-        const allowedActionsForRole2: Action[] = rbac.getAllowedActions(['role2']);
+        const allowedActionsForRole1: Action[] = rbac.getAllowedActionsForRoles(['role1']);
+        const allowedActionsForRole2: Action[] = rbac.getAllowedActionsForRoles(['role2']);
 
         // then
         expect(allowedActionsForRole1).toEqual(expectedPermissionsForRole1);
@@ -56,11 +56,11 @@ describe('RBAC', () => {
 
         // when
         const rbac: RBAC = new RBAC(roleDefinitions);
-        const allowedActionsForSelf: Action[] = rbac.getAllowedActions(['self']);
-        const allowedActionsForGroup: Action[] = rbac.getAllowedActions(['group']);
-        const allowedActionsForOrg: Action[] = rbac.getAllowedActions(['org']);
-        const allowedActionsForAll: Action[] = rbac.getAllowedActions(['all']);
-        const allowedActionsForAllSelfAndGroup: Action[] = rbac.getAllowedActions(['allSelfAndGroup']);
+        const allowedActionsForSelf: Action[] = rbac.getAllowedActionsForRoles(['self']);
+        const allowedActionsForGroup: Action[] = rbac.getAllowedActionsForRoles(['group']);
+        const allowedActionsForOrg: Action[] = rbac.getAllowedActionsForRoles(['org']);
+        const allowedActionsForAll: Action[] = rbac.getAllowedActionsForRoles(['all']);
+        const allowedActionsForAllSelfAndGroup: Action[] = rbac.getAllowedActionsForRoles(['allSelfAndGroup']);
 
         // then
         expect(allowedActionsForSelf).toEqual([{ name: 'action10', scope: DEFAULT_SCOPES.self }]);
@@ -121,8 +121,8 @@ describe('RBAC fluent API', () => {
         ];
 
         // when
-        const allowedActionsForRole1: Action[] = rbac.getAllowedActions(['role1']);
-        const allowedActionsForRole2: Action[] = rbac.getAllowedActions(['role2']);
+        const allowedActionsForRole1: Action[] = rbac.getAllowedActionsForRoles(['role1']);
+        const allowedActionsForRole2: Action[] = rbac.getAllowedActionsForRoles(['role2']);
 
         // then
         expect(allowedActionsForRole1).toEqual(expectedPermissionsForRole1);
@@ -154,11 +154,11 @@ describe('RBAC fluent API', () => {
             .grant('action10', DEFAULT_SCOPES.group);
 
         // when
-        const allowedActionsForSelf: Action[] = rbac.getAllowedActions(['self']);
-        const allowedActionsForGroup: Action[] = rbac.getAllowedActions(['group']);
-        const allowedActionsForOrg: Action[] = rbac.getAllowedActions(['org']);
-        const allowedActionsForAll: Action[] = rbac.getAllowedActions(['all']);
-        const allowedActionsForAllSelfAndGroup: Action[] = rbac.getAllowedActions(['allSelfAndGroup']);
+        const allowedActionsForSelf: Action[] = rbac.getAllowedActionsForRoles(['self']);
+        const allowedActionsForGroup: Action[] = rbac.getAllowedActionsForRoles(['group']);
+        const allowedActionsForOrg: Action[] = rbac.getAllowedActionsForRoles(['org']);
+        const allowedActionsForAll: Action[] = rbac.getAllowedActionsForRoles(['all']);
+        const allowedActionsForAllSelfAndGroup: Action[] = rbac.getAllowedActionsForRoles(['allSelfAndGroup']);
 
         // then
         expect(allowedActionsForSelf).toEqual([{ name: 'action10', scope: DEFAULT_SCOPES.self }]);
