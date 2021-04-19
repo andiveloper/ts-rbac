@@ -1,7 +1,7 @@
-import { Image, SampleApplication, User } from '../samples/sample';
-import { RoleDefinitions } from '../src/role';
-import { RBAC } from '../src/rbac';
-import { DEFAULT_SCOPES } from '../src/scope';
+import { Image, SampleApplication, User } from './sample';
+import { RoleDefinitions } from '../../src/role';
+import { RBAC } from '../../src/rbac';
+import { DEFAULT_SCOPES } from '../../src/scope';
 
 // an object which simulates a database with two images
 const images: { [key: string]: Image } = {

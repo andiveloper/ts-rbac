@@ -1,8 +1,8 @@
 // Arbitrary object which is stored in your database
-import { RBAC } from '../src/rbac';
-import { Permission } from '../src/permission';
-import { DEFAULT_SCOPES } from '../src/scope';
-import { RoleDefinitions } from '../src/role';
+import { RBAC } from '../../src/rbac';
+import { Permission } from '../../src/permission';
+import { DEFAULT_SCOPES } from '../../src/scope';
+import { RoleDefinitions } from '../../src/role';
 
 export type User = {
     id: string; // the id of the user

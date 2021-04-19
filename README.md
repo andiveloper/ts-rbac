@@ -36,7 +36,7 @@ For authorization `roles` and `actions` are used. The following relations apply:
   ```
 
 # Usage
-See `samples/sample.ts` and `test/sample.test.ts`
+See `test/samples/sample.ts` and `test/samples/sample.test.ts`
 
 # Future work
 - Add entity "attribute"-level actions:
