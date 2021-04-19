@@ -91,7 +91,15 @@ export class RBAC {
         return Array.from(this.roleMap.values());
     }
 
+    getDefinedRole(roleName: string): Role | undefined {
+        return this.roleMap.get(roleName);
+    }
+
     getDefinedScopes(): Scope[] {
         return Array.from(this.scopeMap.values());
+    }
+
+    getDefinedScope(scopeName: string): Scope | undefined {
+        return this.scopeMap.get(scopeName);
     }
 }
