@@ -29,6 +29,13 @@ export class RoleBuilder {
         return this;
     }
 
+    grantMultiple(actionNames: string[], scope: Scope): RoleBuilder {
+        for (const actionName of actionNames) {
+            this.grant(actionName, scope);
+        }
+        return this;
+    }
+
     inherit(role: string): RoleBuilder {
         if (this.role.inherits.filter(r => r === role).length > 0) {
             throw new Error(`Role with name '${role} is already inherited by role ${this.role.name}`);

@@ -1,11 +1,46 @@
 import { Role, RoleDefinitionsHelper } from '../src/role';
 import { DEFAULT_SCOPES, Scope } from '../src/scope';
+import { RoleBuilder } from '../lib';
 
 const DEFAULT_SCOPE_MAP: Map<string, Scope> = new Map<string, Scope>();
 for (const scopeName in DEFAULT_SCOPES) {
     DEFAULT_SCOPE_MAP.set(DEFAULT_SCOPES[scopeName].name, DEFAULT_SCOPES[scopeName]);
 }
+describe('RoleBuilder', () => {
+    it('builds the role correctly when grant(...) is used', () => {
+        // given
+        const role1 = new RoleBuilder('role1');
 
+        // when
+        role1.grant('action10', DEFAULT_SCOPES.all);
+
+        // then
+        expect(role1.role.actions[0].name).toEqual('action10');
+        expect(role1.role.actions[0].scope).toEqual(DEFAULT_SCOPES.all);
+    });
+
+    it('builds the role correctly when grantMultiple(...) is used', () => {
+        // given
+        const role1 = new RoleBuilder('role1');
+
+        // when
+        role1
+            .grantMultiple(['action10', 'action20'], DEFAULT_SCOPES.all)
+            .grant('action30', DEFAULT_SCOPES.org);
+
+        // then
+        expect(role1.role.actions[0].name).toEqual('action10');
+        expect(role1.role.actions[0].scope).toEqual(DEFAULT_SCOPES.all);
+
+        expect(role1.role.actions[1].name).toEqual('action20');
+        expect(role1.role.actions[1].scope).toEqual(DEFAULT_SCOPES.all);
+
+        expect(role1.role.actions[2].name).toEqual('action30');
+        expect(role1.role.actions[2].scope).toEqual(DEFAULT_SCOPES.org);
+
+    });
+
+});
 describe('RoleDefinitionsHelper', () => {
     it('parses roleDefinitions to expected Role[]', () => {
         // given

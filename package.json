@@ -1,6 +1,6 @@
 {
   "name": "ts-rbac",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Role-based access control for TypeScript applications. Framework and architecture independent!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,8 @@
     "watch": "tsc -w",
     "lint": "eslint . --ext .ts",
     "pretest": "npm run build && npm run lint",
-    "test": "jest --verbose --no-cache"
+    "test": "jest --verbose --no-cache",
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
