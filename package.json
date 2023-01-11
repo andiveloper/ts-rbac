@@ -1,6 +1,6 @@
 {
   "name": "ts-rbac",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Role-based access control for TypeScript applications. Framework and architecture independent!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
