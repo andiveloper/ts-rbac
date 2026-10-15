@@ -13,6 +13,12 @@
     "strict": true,
     "esModuleInterop": true,
     "removeComments": true,
+    "ignoreDeprecations": "6.0",
+    "skipLibCheck": true,
+    "types": [
+      "jest",
+      "node"
+    ],
     "resolveJsonModule": true,
   },
   "exclude": [
